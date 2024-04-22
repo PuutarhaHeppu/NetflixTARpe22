@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Models;
 using NetflexTARpe22.Services;
 using System.Collections.ObjectModel;
@@ -17,7 +18,10 @@ namespace ViewModels
         private Media _TrendingMovie;
 
         [ObservableProperty]
-        private Media _selectedMedia;
+        [NotifyPropertyChangedFor(nameof(ShowMovieInfoBox))]
+        private Media? _selectedMedia;
+
+        public bool ShowMovieInfoBox => SelectedMedia is not null;
 
         public ObservableCollection<Media> TopRated { get; set; } = new();
         public ObservableCollection<Media> Trending { get; set; } = new();
@@ -73,7 +77,13 @@ namespace ViewModels
         private void SetMediaCollection(IEnumerable<Media> medias, ObservableCollection<Media> collection)
         {
             collection.Clear();
-            //foreach
+            foreach (var media in medias)
+            {
+                collection.Add(media);
+            }
         }
+
+        [RelayCommand]
+        private void SelectMedia(Media? media = null) => SelectedMedia = media;
     }
 }
