@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Maui;
+using NetflexTARpe22.Pages;
 using NetflexTARpe22.Services;
-using Services;
 using ViewModels;
 
 namespace NetflexTARpe22;
