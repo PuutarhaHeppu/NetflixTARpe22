@@ -1,10 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Models;
 using NetflexTARpe22.Services;
+using NetflixTARpe22.Models;
 using System.Collections.ObjectModel;
 
-namespace ViewModels
+namespace NetflixTARpe22.ViewModels
 {
     public partial class HomeViewModel : ObservableObject
     {
@@ -56,7 +56,7 @@ namespace ViewModels
             SetMediaCollection(topRatedList, TopRated);
             SetMediaCollection(actionList, ActionMovies);
 
-            SelectedMedia = TrendingMovie;
+            //SelectedMedia = TrendingMovie;
 
             if (trendingList?.Any() == true)
             {
@@ -84,6 +84,17 @@ namespace ViewModels
         }
 
         [RelayCommand]
-        private void SelectMedia(Media? media = null) => SelectedMedia = media;
+        private void SelectMedia(Media? media = null)
+        {
+            if(media is not null)
+            {
+                if(media.Id == SelectedMedia.Id)
+                {
+                    media = null;
+                }
+            }
+            SelectedMedia = media;
+        }
+            
     }
 }

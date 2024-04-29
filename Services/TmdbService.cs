@@ -1,6 +1,5 @@
-﻿using Models;
+﻿using NetflixTARpe22.Models;
 using System.Net.Http.Json;
-using UIKit;
 
 namespace NetflexTARpe22.Services
 {

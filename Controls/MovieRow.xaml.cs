@@ -1,16 +1,27 @@
-using Models;
+using NetflixTARpe22.Models;
+using System.Windows.Input;
+using Xamarin.Forms;
 
-namespace Controls;
+namespace NetflixTARpe22.Controls;
+
+public class MediaSelectEventArgs : EventArgs
+{
+    public Media Media { get; set; }
+
+    public MediaSelectEventArgs(Media media) => Media = media;
+}
 
 public partial class MovieRow : ContentView
 {
 	public static readonly BindableProperty MoviesProperty = BindableProperty.Create(nameof(Heading), typeof(IEnumerable<Media>), typeof(MovieRow), Enumerable.Empty<Media>());
 	public static readonly BindableProperty IsLargeProperty = BindableProperty.Create(nameof(IsLarge), typeof(bool), typeof(MovieRow), false);
 	public static readonly BindableProperty HeadingProperty = BindableProperty.Create(nameof(Heading), typeof(string), typeof(MovieRow), string.Empty);
+    public event EventHandler<MediaSelectEventArgs> MediaSelected;
 
     public MovieRow()
 	{
 		InitializeComponent();
+        MediaDetailsCommand = new Command(ExecuteMediaDetailsCommand);
 	}
 
 	public string Heading
@@ -30,4 +41,13 @@ public partial class MovieRow : ContentView
     }
 
     public bool IsNotLarge => !IsLarge;
+
+    public ICommand MediaDetailsCommand { get; private set; }
+    private void ExecuteMediaDetailsCommand(object parameter)
+    {
+        if(parameter is Media media && media is not null)
+        {
+            MediaSelected?.Invoke(this, new MediaSelectEventArgs(media));
+        }
+    }
 }

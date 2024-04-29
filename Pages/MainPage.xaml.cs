@@ -1,20 +1,38 @@
-using NetflexTARpe22.Services;
+using NetflixTARpe22.ViewModels;
+using Xamarin.Forms;
+using NetflixTARpe22.Controls;
+using NetflixTARpe22.Pages;
 
 namespace NetflexTARpe22.Pages;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
-	public MainPage(TmdbService tmdbService)
+	private readonly HomeViewModel _homeViewModel;
+	public MainPage(HomeViewModel homeViewModel)
 	{
 		InitializeComponent();
-		_tmdbService = TmdbService;
+		_homeViewModel = homeViewModel;
+		BindingContext = _homeViewModel;
 	}
 
 	protected async override void OnAppearing()
 	{
 		base.OnAppearing();
-		var trending = await _tmdbService.GetTrendingAsync();
+		await _homeViewModel.InitializeAsync();
+	}
+
+	private void MovieRow_MediaSelected(object sender, Controls.MediaSelectEventArgs e)
+	{
+		_homeViewModel.SelectMediaCommand.Execute(e.Media);
+	}
+    private void MovieInfoBox_Closed(object sender, EventArgs e)
+    {
+        _homeViewModel.SelectMediaCommand.Execute(null);
+    }
+
+	private async void CategoriesMenu_Tapped(object sender, TappedEventArgs e) 
+	{
+		await Shell.Current.GoToAsync(nameof(CategoriesPage));
 	}
 
 

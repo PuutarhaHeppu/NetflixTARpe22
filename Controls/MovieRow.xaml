@@ -11,7 +11,7 @@
                FontAttributes="Bold"
                FontSize="16"
                HorizontalTextAlignment="Start"
-               Margin="10, 15, 0, 5"/><!--comment-->
+               Margin="10, 15, 0, 5"/>
 
         <CollectionView ItemsSource="{Binding Movies}">
             <CollectionView.ItemsLayout>
@@ -23,22 +23,28 @@
                     <Border StrokeShape="RoundRectangle 5"
                             Stroke="Black"
                             StrokeThickness="1">
+                        <Border.GestureRecoqnizer>
+                            <TapGestureRecognizer command="{Binding Source={RelativeSource AncestorType={x:Type controls:MovieRow}}, Path=MediaDetailsCommand}"
+                                                  ComandParameter="{Binding .}"/>
+                        </Border.GestureRecoqnizer>
+                            
                         <Grid>
                             <Image Aspect="AspectFill"
-                               HeightRequest="150"
-                               widthRequest="120"
-                               IsVisible="{Binding Source={RelativeSource AncestorType{x:Type controls:MovieRow}}, Path=IsNotLarge}">
+                                   HeightRequest="150"
+                                   widthRequest="120"
+                                   IsVisible="{Binding Source={RelativeSource AncestorType{x:Type controls:MovieRow}}, Path=IsNotLarge}">
                                 <Image.Source>
                                     <UriImageSource Uri="{Binding ThumbnailSmall}"/>
                                 </Image.Source>
                                 <Image Aspect="AspectFill"
-                               HeightRequest="200"
-                               widthRequest="150"
-                               IsVisible="{Binding Source={RelativeSource AncestorType{x:Type controls:MovieRow}}, Path=IsNotLarge}">
+                                        HeightRequest="200"
+                                        widthRequest="150"
+                                        IsVisible="{Binding Source={RelativeSource AncestorType{x:Type controls:MovieRow}}, Path=IsNotLarge}">
                                     <Image.Source>
                                         <UriImageSource Uri="{Binding ThumbnailSmall}"/>
                                     </Image.Source>
                                 </Image>
+                            </Image>
                         </Grid>
                     </Border>
                 </DataTemplate>

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Models
+namespace NetflixTARpe22.Models
 {
     public class Media
     {

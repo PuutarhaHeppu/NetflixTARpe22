@@ -54,6 +54,13 @@
 	  <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
 	  <PackageReference Include="Microsoft.UI.Xaml" Version="2.8.2" />
 	  <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
+	  <PackageReference Include="Xamarin.Forms" Version="5.0.0.2662" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Pages\CategoriesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </EmbeddedResource>
 	</ItemGroup>
 
 	<ItemGroup>
