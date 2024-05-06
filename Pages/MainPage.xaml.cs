@@ -1,7 +1,5 @@
-using NetflixTARpe22.ViewModels;
-using Xamarin.Forms;
-using NetflixTARpe22.Controls;
 using NetflixTARpe22.Pages;
+using NetflixTARpe22.ViewModels;
 
 namespace NetflexTARpe22.Pages;
 
@@ -21,7 +19,7 @@ public partial class MainPage : ContentPage
 		await _homeViewModel.InitializeAsync();
 	}
 
-	private void MovieRow_MediaSelected(object sender, Controls.MediaSelectEventArgs e)
+	private void MovieRow_MediaSelected(object sender, NetflixTARpe22.Controls.MediaSelectEventArgs e)
 	{
 		_homeViewModel.SelectMediaCommand.Execute(e.Media);
 	}

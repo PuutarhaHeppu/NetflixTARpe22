@@ -1,5 +1,4 @@
 ﻿using NetflixTARpe22.Pages;
-using Xamarin.Forms;
 
 namespace NetflexTARpe22;
 

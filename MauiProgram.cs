@@ -1,7 +1,6 @@
-﻿using CommunityToolkit.Maui;
-using NetflexTARpe22.Pages;
+﻿using NetflexTARpe22.Pages;
 using NetflexTARpe22.Services;
-using ViewModels;
+using NetflixTARpe22.ViewModels;
 
 namespace NetflexTARpe22;
 

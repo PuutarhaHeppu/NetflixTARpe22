@@ -4,9 +4,9 @@
              x:Class="NetflexTARpe22.Pages.MainPage"
              Shell.NavBarIsVisible="False"
              BackgroundColor="Black"
-             xmlns:vm="clr-namespace:ViewModels"
+             xmlns:vm="clr-namespace:NetflixTARpe22.ViewModels"
              x:DataType="vm:HomeViewModel"
-             xmlns:controls="clr-namespace:Controls">
+             xmlns:controls="clr-namespace:NetflixTARpe22.Controls">
 
     <ContentPage.Resources>
         <ResourceDictionary>
